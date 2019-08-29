@@ -9,7 +9,7 @@ android:
     - tools
     - platform-tools
     - build-tools-28.0.3
-    - android-28
+    - android-28  
     - extra-google-m2repository
   licenses:
     - 'android-sdk-preview-license-52d11cd2'
@@ -20,6 +20,8 @@ before_install:
   - yes | sdkmanager "platforms;android-28"
 
 script: 
-    - ./gradlew --stacktrace lint test :GenesisAndroid:assembleDebug :GenesisAndroid:assembleRelease  
+    - ./gradlew clean
+    - ./gradlew assembleDebug
+    - ./gradlew assembleDebugAndroidTest 
 
 after_success: ./script/deploy_snapshot.sh
